@@ -1,4 +1,4 @@
-service: my-project
+service: factle-server
 
 plugins:
   - serverless-offline
@@ -32,8 +32,7 @@ provider:
     SERVERLESS_REGION: ${self:provider.region}
     SERVERLESS_STAGE: ${self:provider.stage}
     SERVERLESS_SERVICE: ${self:service}
-    # replace with your connection string, preferably through SSM
-    DB_CONNECTION_STR: mongodb+srv://example1:pUQneSDVRH1hq9nj@skillquestdev.mvu8r.mongodb.net/my-database
+    DB_CONNECTION_STR: ${ssm:${self:provider.stage}-db-pass}
 
 functions:
   example:
